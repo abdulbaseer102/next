@@ -2,14 +2,25 @@ import { Expense } from '@/app/page';
 import React from 'react';
 
 function ExpenseList({ expenses, onDeleteExpense }: { expenses: Array<Expense>, onDeleteExpense: any }) {
+  // Function to handle printing the list
+  const handlePrintList = () => {
+    window.print();
+  };
+
   return (
     <div>
+      <button
+        onClick={handlePrintList}
+        className="px-3 py-1 m-2 bg-blue-400 text-white rounded-lg shadow-md hover:bg-blue-500"
+      >
+        Print List
+      </button>
       <ul className="space-y-4">
         {expenses.map((expense: Expense) => (
           <li key={expense.id} className="flex justify-between items-center px-4 py-2">
             <div className='text-gray-500 flex flex-col'>
               <span>Decription: {expense?.desription}</span>
-              <span className='font-bold'>Amount Of Expense: ${expense.amount.toFixed(2)}</span>
+              <span className='font-bold'>Amount Of Expense: {expense.amount.toFixed(2)}</span>
             </div>
             <button
               onClick={() => onDeleteExpense(expense.id)}
