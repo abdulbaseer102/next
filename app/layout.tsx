@@ -16,7 +16,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className="flex justify-center item-center min-h screen bg-gradient-to-br h-screen from-[#000000] to-[#3533CD]">
+
+        <div className="p-8 bg-[#e7e7e7] rounded-xl shadow-2x1 w-96">
+        {children}
+        </div>
+        
+       </body>
     </html>
   );
 }
