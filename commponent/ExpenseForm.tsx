@@ -1,53 +1,53 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
-function ExpenseForm({onAddEpense}:any) {
-  const [desription, setDescription] = useState("")
-  const [amount, setAmount] = useState("")
+function ExpenseForm({ onAddExpense }: { onAddExpense: any }) {
+  const [description, setDescription] = useState("");
+  const [amount, setAmount] = useState("");
 
-  const handleSubmit = (e:any) =>{
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if(desription.length>0 && amount){
-      onAddEpense({
-        id:Date.now(),
-        desription:desription,
-        amount:parseFloat(amount)
+    if (description.length > 0 && amount) {
+      onAddExpense({
+        id: Date.now(),
+        description: description,
+        amount: parseFloat(amount)
       });
-      setDescription(""),
+      setDescription("");
       setAmount("");
     }
   }
+
   return (
     <div className="mb-6">
-     <form onSubmit={handleSubmit} className="space-y-5">
-      <div  className="input-div w-full">
-           <input 
-           type="number"
+      <form onSubmit={handleSubmit} className="space-y-5">
+        <div className="input-div w-auto">
+          <input
+            type="number"
             placeholder='Amount'
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
-            className=" h-12 px-4 rounded-lg text-gray-500"
-            />
-      </div>
-      <br />
-      <div className='w-full'> 
-      <input 
-           type="text"
+            className="h-12 px-4 rounded-lg text-gray-500"
+          />
+        </div>
+        <br />
+        <div className='w-full'>
+          <input
+            type="text"
             placeholder="Description"
-            value={desription}
+            value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className=" h-12 px-4 rounded-lg text-gray-500"
-            />
-      </div>
-      <br />
-      <div className="flex justify-end">
-      <button type="submit" className="px-4 py-2 bg-gray-200 text-gray-500 rounded-lg">
-  ADD
-</button>
-
-      </div>
-     </form>
+            className="h-12 px-4 rounded-lg text-gray-500"
+          />
+        </div>
+        <br />
+        <div className="flex justify-end">
+          <button type="submit" className="button px-4 py-2 bg-gray-200 text-gray-500 rounded-lg">
+            ADD
+          </button>
+        </div>
+      </form>
     </div>
-  )
+  );
 }
 
-export default ExpenseForm
+export default ExpenseForm;
